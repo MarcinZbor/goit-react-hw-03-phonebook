@@ -24,9 +24,10 @@ import styles from './App.module.css';
     });
   }
   
-  componentDidUpdate(prevProps, prevStates){
-const contacts = JSON.stringify(this.state.contacts)
-localStorage.setItem("parsedContacts", contacts )
+  componentDidUpdate(prevProps, prevState){
+if (this.state.contacts !== prevState.contact){
+localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
+}
   }
 
   handleSubmit = event => {
