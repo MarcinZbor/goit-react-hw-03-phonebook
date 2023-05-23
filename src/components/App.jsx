@@ -16,6 +16,19 @@ import styles from './App.module.css';
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = localStorage.getItem("contacts");
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) this.setState({
+      contacts: parsedContacts
+    });
+  }
+  
+  componentDidUpdate(prevProps, prevStates){
+const contacts = JSON.stringify(this.state.contacts)
+localStorage.setItem("parsedContacts", contacts )
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
